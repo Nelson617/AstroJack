@@ -29,8 +29,8 @@ public class BasicGameApp implements Runnable {
    //You can set their initial values too
    
    //Sets the width and height of the program window
-	final int WIDTH = 1000;
-	final int HEIGHT = 700;
+	final int WIDTH = 1120;
+	final int HEIGHT = 790;
 
 	public int x;
 
@@ -68,10 +68,12 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100);
-		jack = new Astronaut(200,80);
+		astro = new Astronaut(70,100);
+		jack = new Astronaut(70,100);
 		jack.dx = 0;
-		jack.dy = 1;
+		jack.dy = 500;
+		astro.dx = 50;
+		astro.dy = 0;
 
 	}// BasicGameApp()
 
@@ -98,8 +100,8 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
-		jack.move();
+		astro.bounce();
+		jack.bounce();
 
 	}
 	
