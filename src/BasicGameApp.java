@@ -42,11 +42,14 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image scatPic;
+	public Image background;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
 	private Astronaut jack;
+	private Astronaut jimmy;
 
 
    // Main method definition
@@ -67,13 +70,19 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
+		background = Toolkit.getDefaultToolkit().getImage("rocky.jpeg");
+		scatPic = Toolkit.getDefaultToolkit().getImage("srt.jpeg");
+
 		astro = new Astronaut(70,100);
 		jack = new Astronaut(70,100);
+		jimmy = new Astronaut(70,100);
 		jack.dx = 0;
-		jack.dy = 500;
+		jack.dy = 50;
 		astro.dx = 50;
 		astro.dy = 0;
+		jimmy.dx = 25;
+		jimmy.dy = 25;
 
 	}// BasicGameApp()
 
@@ -102,6 +111,7 @@ public class BasicGameApp implements Runnable {
       //calls the move( ) code in the objects
 		astro.bounce();
 		jack.bounce();
+		jimmy.bounce();
 
 	}
 	
@@ -152,9 +162,13 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+		g.drawImage(background, 0,0,WIDTH, HEIGHT, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
 		g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
+		g.drawImage(scatPic, jimmy.xpos, jimmy.ypos, jimmy.width, jimmy.height, null);
 
+		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
+		g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
 		g.dispose();
 
 		bufferStrategy.show();
