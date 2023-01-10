@@ -112,9 +112,12 @@ public class BasicGameApp implements Runnable {
 		astro.bounce();
 		jack.bounce();
 		jimmy.bounce();
-
 	}
-	
+	public void crash(){
+		if(jimmy.rec.intersects(astro.rec)){
+			System.out. println("crash");
+		}
+	}
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
    		//sleep
