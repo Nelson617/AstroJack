@@ -109,15 +109,54 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
+		change();
+		size();
+		crash();
 		astro.bounce();
 		jack.bounce();
 		jimmy.bounce();
+
 	}
-	public void crash(){
-		if(jimmy.rec.intersects(astro.rec)){
+
+
+	public void crash()
+	{
+		if(jimmy.rec.intersects(jack.rec))
+		{
 			System.out. println("crash");
+			jimmy.dx = 1*jimmy.dx;
+			jimmy.dy = -jimmy.dy;
+			jack.dx = 1*jack.dx;
+			jack.dy = -jack.dy;
 		}
 	}
+
+	public void change()
+	{
+		if(astro.rec.intersects(jimmy.rec));
+
+		System.out. println("crash");
+		astro.dx = 1*astro.dx;
+		astro.dy = -astro.dy;
+		jimmy.dx = 1*jimmy.dx;
+		jimmy.dy = -jimmy.dy;
+}
+
+	public void size()
+	{
+		if(astro.rec.intersects(jimmy.rec))
+		{
+			astro.height = 2*astro.height;
+			astro.width = 2*astro.width;
+			jack.height = 2*jack.height;
+			jack.width = 2*jack.width;
+
+		}
+	}
+
+
+
+
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
    		//sleep
