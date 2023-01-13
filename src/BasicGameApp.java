@@ -121,13 +121,14 @@ public class BasicGameApp implements Runnable {
 
 	public void crash()
 	{
-		if(jimmy.rec.intersects(jack.rec))
+		if(jimmy.rec.intersects(jack.rec) &&jack.isAlive == true &&astro.isAlive == true)
 		{
 			System.out. println("crash");
 			jimmy.dx = 1*jimmy.dx;
 			jimmy.dy = -jimmy.dy;
 			jack.dx = 1*jack.dx;
 			jack.dy = -jack.dy;
+			jack.isAlive = false;
 		}
 	}
 
@@ -205,12 +206,15 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(background, 0,0,WIDTH, HEIGHT, null);
+		if(jack.isAlive == true) {
+			g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
+			g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
+		}
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astroPic, jack.xpos, jack.ypos, jack.width, jack.height, null);
 		g.drawImage(scatPic, jimmy.xpos, jimmy.ypos, jimmy.width, jimmy.height, null);
 
 		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
-		g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
+//		g.draw(new Rectangle(jack.xpos, jack.ypos, jack.width, jack.height));
 		g.dispose();
 
 		bufferStrategy.show();
